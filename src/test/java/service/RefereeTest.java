@@ -2,6 +2,7 @@ package service;
 
 import domain.Car;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -10,6 +11,11 @@ import java.util.List;
 class RefereeTest {
 
     private Referee referee;
+
+    @BeforeEach
+    void beforeEach() {
+        referee = new Referee();
+    }
 
     @ParameterizedTest
     @CsvSource(value = {"0,0", "0,1", "4,3"})
@@ -22,13 +28,13 @@ class RefereeTest {
         // when then
         List<Car> winner = referee.judgeWinner(cars);
 
-        if (car1.compareTo(car2) == 0) {    //car1 == car2
+        if (number1 == number2) {    //car1 == car2
             Assertions.assertThat(winner).isEqualTo(cars);
         }
-        if (car1.compareTo(car2) > 0) {     //car1 > car2
+        if (number1 > number2) {     //car1 > car2
             Assertions.assertThat(winner).isEqualTo(List.of(car1));
         }
-        if (car1.compareTo(car2) < 0) {
+        if (number1 < number2) {
             Assertions.assertThat(winner).isEqualTo(List.of(car2));
         }
 

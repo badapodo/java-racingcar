@@ -15,6 +15,10 @@ public class Position {
         return new Position(value);
     }
 
+    public int compareTo(Position position) {
+        return Integer.compare(this.value, position.value);
+    }
+
 
     public Position tryMove(int number) {
         if(number >= 4) {
