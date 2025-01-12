@@ -14,6 +14,12 @@ public class Car {
         this.position = Position.of(position);
     }
 
+    public Car(String name, Position position) {
+        validateCar(name);
+        this.name = name;
+        this.position = position;
+    }
+
     public static Car of(String name, int position) {
         return new Car(name, position);
     }
@@ -24,6 +30,10 @@ public class Car {
 
     public int compareToPosition(Car car) {
         return position.compareTo(car.position);
+    }
+
+    public Car tryMove(int number) {
+        return new Car(name, position.tryMove(number));
     }
 
     private void validateCar(String name) {

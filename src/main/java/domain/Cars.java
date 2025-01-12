@@ -1,5 +1,6 @@
 package domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import exception.CarNameDuplicationException;
 
 import java.util.List;
@@ -32,6 +33,13 @@ public class Cars {
         if(duplicated) {
             throw new CarNameDuplicationException();
         }
+    }
+
+    public Cars tryMove(int tryingNumber) {
+        return new Cars(
+                values.stream()
+                .map(car -> car.tryMove(Randoms.pickNumberInRange(0,9)))
+                .collect(Collectors.toList()));
     }
 
 }
