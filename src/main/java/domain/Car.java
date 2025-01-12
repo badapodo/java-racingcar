@@ -7,7 +7,7 @@ public class Car {
     private final Position position;
 
     public Car(String name, int position) {
-        validCar(name);
+        validateCar(name);
         this.name = name;
         this.position = Position.of(position);
     }
@@ -24,7 +24,7 @@ public class Car {
         return position.compareTo(car.position);
     }
 
-    private void validCar(String name) {
+    private void validateCar(String name) {
         validCarName(name);
     }
 
