@@ -19,7 +19,6 @@ public class Position {
         return Integer.compare(this.value, position.value);
     }
 
-
     public Position tryMove(int number) {
         if(number >= 4) {
             return of(value + 1);
@@ -37,5 +36,14 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hashCode(value);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < value; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
     }
 }
