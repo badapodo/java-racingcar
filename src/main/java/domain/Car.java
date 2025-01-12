@@ -2,6 +2,8 @@ package domain;
 
 import exception.CarNameLengthException;
 
+import java.util.Objects;
+
 public class Car {
     private final String name;
     private final Position position;
@@ -20,7 +22,7 @@ public class Car {
         return new Car(name, Position.INITIAL_VALUE);
     }
 
-    public int compareTo(Car car) {
+    public int compareToPosition(Car car) {
         return position.compareTo(car.position);
     }
 
@@ -34,4 +36,15 @@ public class Car {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
+    }
 }

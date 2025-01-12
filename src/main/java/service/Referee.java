@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 public class Referee {
     public List<Car> judgeWinner(List<Car> cars) {
         Car winner = cars.stream()
-                .max(Car::compareTo)
+                .max(Car::compareToPosition)
                 .orElseThrow();
 
         return cars.stream()
-                .filter(car -> car.compareTo(winner) == 0)
+                .filter(car -> car.compareToPosition(winner) == 0)
                 .collect(Collectors.toList());
     }
 }
